@@ -38,9 +38,10 @@ export const Details=()=>{
     //console.log(bookdata)
     return(
         <>
-        <div className="container mt-5">
-            <h1>{bookdata.name}</h1>
-        <img src={url} alt="Loading_Image.." width={"50%"}  style={{borderRadius:'10px'}}/>    
+        <div style={{border:'2px solid black'}} className="container mt-5">
+            {/* <h1>{bookdata.name}</h1> */}
+        <img src={url} alt="Loading_Image.." style={{borderRadius:'10px',width:'80%', marginLeft:'10%',marginRight:'10%',marginTop:'2%'}}/>    
+        <div style={{border:'2px solid black', textAlign:'center'}}>{ <h1>Title:- {bookdata.name}</h1> }</div>
         <h1>Details</h1>
         <h4>Price: {bookdata.price}</h4>
         <h4>ISBN: {bookdata.isbn}</h4>

@@ -36,7 +36,7 @@ export const NavigationBar=()=>{
         </Nav>
       </Navbar.Collapse>
       <Nav>
-        <Button onClick={LogOut}  variant="outline-light">{status}</Button>
+        <Button onClick={LogOut} style={{borderRadius:'20px'}} variant="outline-light">{status}</Button>
       </Nav>
     </Navbar>
 
