@@ -6,6 +6,8 @@ import { useFirebase } from "../context/Firebase";
 
 import Button from 'react-bootstrap/Button';
 
+import './btn.css'
+
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {
@@ -57,9 +59,10 @@ export const RegisterPage=()=>{
         if(firebase.is_loggedIn)
         {
             //navigate to home
+            firebase.getUserName(name);
             navigate('/');
         }
-    },[firebase,navigate])
+    },[firebase,navigate,firebase.user])
 
     const [match,setMatch]=useState("");
 
@@ -97,7 +100,7 @@ export const RegisterPage=()=>{
 
               <div className="d-flex flex-row align-items-center ">
                 <MDBIcon fas icon="key me-3" size='lg'/>
-                <input required value={password1} onChange={(e)=>handlePass(e)} placeholder='Password'  type='password' size={30} style={{height:'40px', borderRadius:'10px'}}/>
+                <input required value={password1} onChange={(e)=>handlePass(e)} placeholder='Retype Password'  type='password' size={30} style={{height:'40px', borderRadius:'10px'}}/>
               </div>
               <p style={{color:'red'}}  className="mb-4">{match}</p>
 
@@ -106,7 +109,7 @@ export const RegisterPage=()=>{
               <Button onClick={submitHandler} className='mb-4' size='lg'>Register</Button>
               <Button onClick={()=>firebase.signUpWithGoogle()} className='mb-4' variant='danger' color='red' size='lg'>Signup with Google</Button>
     
-                <p >already have an account? <a href="/login">Login</a></p>
+                <p >already have an account? <span className='span' onClick={()=>navigate('/login')}>Login</span></p>
 
             </MDBCol>
 

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useFirebase } from "../context/Firebase";
 import { BookCard } from "../components/Card";
-import { Navigate } from "react-router-dom";
 
 export const ViewOrders=()=>{
     const firebase=useFirebase();
@@ -16,17 +15,28 @@ export const ViewOrders=()=>{
 
     console.log(books);
 
-    return (
-        <div>
+    const styles={
+      display:'flex',
+      flexWrap: 'wrap',
+      //justifyContent:'space-between',
+      //border:'2px solid black'
+  };
+
+    return (<>
+    <div style={{textAlign:'center', fontSize:'30px', fontWeight:'bolder', fontFamily:'cursive'}}>My Books</div>
+        <div style={styles}className="m-5">
          {books.map((book) => (
         <BookCard
           link={`/book/order/${book.id}`}
           key={book.id}
           id={book.id}
           {...book.data()}
+          btntitle={"View Orders"}
+          varient={"success"}
         />
       ))}
     </div>
+    </>
     );
 }
 

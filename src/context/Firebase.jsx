@@ -53,6 +53,12 @@ export const FirebaseProvider=(props)=>{
         
     }
 
+    const getUserName=(name)=>{
+        const user = firebaseAuth.currentUser;
+         if (user !== null) {user.displayName=name;}
+         console.log(user.displayName);
+     }
+
     const logInUserWithEmialAndPass=(email,pass)=>{
         signInWithEmailAndPassword(firebaseAuth,email,pass).then(value=>{}).catch(err=>alert(err));
         
@@ -133,6 +139,8 @@ export const FirebaseProvider=(props)=>{
     
 
     
+
+    
     return (
         <FirebaseContext.Provider value={{
             user,
@@ -148,7 +156,8 @@ export const FirebaseProvider=(props)=>{
             getBookById,
             placeOrder,
             fetchMyBooks,
-            getOrders
+            getOrders,
+            getUserName
         }}>
             {props.children}
         </FirebaseContext.Provider>

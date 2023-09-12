@@ -1,6 +1,5 @@
 import {React,useEffect, useState} from "react";
 import { useFirebase } from "../context/Firebase";
-import CardGroup from 'react-bootstrap/CardGroup';
 
 import { BookCard } from "../components/Card";
 
@@ -13,16 +12,29 @@ export const HomePage=()=>{
         firebase.listAllBooks().then(books=>{setBooks(books.docs);});
     },[firebase]);
 
+    console.log(firebase.user);
+
+    const styles={
+        display:'flex',
+        flexWrap: 'wrap',
+        //justifyContent:'space-between',
+        //border:'2px solid black'
+    };
+
     return(
-        <div className="container mt-5">
-            
-            <CardGroup>
+        <>
+        <div style={{textAlign:'center', fontSize:'30px', fontWeight:'bolder', fontFamily:'cursive'}}>Books to live by.</div>
+        <div style={styles}className="m-4">
                 {
-                books.map((book)=><BookCard link={`book/view/${book.id}`} key={book.id} {...book.data()} id={book.id}  />)
+                books.map((book)=><BookCard 
+                link={`book/view/${book.id}`} 
+                key={book.id} 
+                {...book.data()} 
+                id={book.id} 
+                btntitle={"View"}
+                varient={"danger"}
+                />)
             }
-            </CardGroup>
-            
-            
-        </div>
+            </div></>
     );
 }

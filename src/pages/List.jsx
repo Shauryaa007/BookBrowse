@@ -30,6 +30,7 @@ export const ListingPage=()=>{
     const [coverPic,setCoverPic]=useState("");    
 
     const submitHandler=(e)=>{
+      
        if(name===""||isbnNumber===""){alert("Enter Book Name and isbn")}
        else{
         e.preventDefault();

@@ -1,8 +1,8 @@
 import {React , useEffect,useState} from "react";
 import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
 import { useFirebase } from "../context/Firebase";
 import { useNavigate } from "react-router-dom";
+import "./Card.css"
 
 export const BookCard=(props)=>{
  
@@ -18,15 +18,15 @@ export const BookCard=(props)=>{
 
 
     return(
-        <Card style={{ width: '25rem' , margin:'15px', border:'2px solid black', borderRadius:'10px'}}>
-      <Card.Img variant="top" src={url} />
-      <Card.Body>
-        <Card.Title>{props.name}</Card.Title>
-        <Card.Text>
-          This book has a title "{props.name}"  sold by {props.userName} and having price of {props.price} 
-        </Card.Text> 
-        <Button onClick={e=>{navigate(props.link)}} variant="primary">View</Button>
-      </Card.Body>
-    </Card>
-    );
-}
+        <div className="bookcard">
+        <img src={url} alt="" className="bookimg" />
+       {/* <div className="title"><b>Tittle:</b> {props.name}</div> */}
+       {/* <p>{props.name}</p>
+       <p>{props.userName}</p>
+       <p>{props.userEmail}</p> */}
+       <Button className="btnn" onClick={e=>{navigate(props.link)}} variant={props.varient}>{props.btntitle}</Button>
+    </div>
+  );
+};
+ 
+        

@@ -3,6 +3,7 @@ import React, { useState ,useEffect} from "react";
 import { useNavigate } from 'react-router-dom';
 import { useFirebase } from "../context/Firebase";
 import Button from 'react-bootstrap/Button';
+import './btn.css'
 
 import {
   MDBContainer,
@@ -36,6 +37,7 @@ export const LoginPage=()=>{
         const result = await firebase.logInUserWithEmialAndPass(email,password);
 
         console.log("successfully loggedIn",result);
+
     }
 
     useEffect(()=>{
@@ -74,7 +76,7 @@ export const LoginPage=()=>{
               <Button onClick={submitHandler} className='mb-4' size='lg'>Sign In</Button>
               <Button onClick={()=>firebase.signUpWithGoogle()} className='mb-4' variant='danger' color='red' size='lg'>Signup with Google</Button>
     
-                <p>don't have an account? <a href="/register">Register</a></p>
+                <p>don't have an account? <span className='span' onClick={()=>navigate('/register')}>Register</span></p>
 
             </MDBCol>
 
